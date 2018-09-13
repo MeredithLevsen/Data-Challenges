@@ -12,5 +12,5 @@ This is currently a work in progress. I acquired this data set of purchase histo
 (Currently a work in progress.) This assignment came from Insight program directors. 
 
 ## Yelp Data: Predict Restaurant Closings
-(Work in progress.) The goal of this project was to predict which restaurants would close. Insights about what factors predict restaurants closing could be used to identify restaurants who might be at risk for failing - this tool could then be used to inform the owner of the restaurant that they are at risk and make recommendations for things they could do to improve their chances of staying in business. 
+(Work in progress.) The goal of this project was to predict which restaurants would close. Insights about what factors predict restaurants closing could be used to identify restaurants who might be at risk for failing - this tool could then be used to inform the owner of the restaurant that they are at risk and make recommendations for things they could do to improve their chances of staying in business.  
 **Data:** I obtained this dataset from Kaggle (https://www.kaggle.com/yelp-dataset/yelp-dataset/home). 
