@@ -8,7 +8,7 @@ This was assigned by Insight program directors to be completed within a 4-hour t
 ## Retail: Data Mining
 This is currently a work in progress. I acquired this data set of purchase history online. 
 
-## Video Games
+## Video Games: Predict Success of Video Games
 (Currently a work in progress.) This assignment came from Insight program directors. 
 
 ## Yelp Data: Predict Restaurant Closings
