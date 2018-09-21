@@ -17,12 +17,7 @@ class Sent_Received_Summarizer():
     
      
     def __init__(self):
-        '''Initialize an object that summarizes .'''
-        self.df_received = []
-        self.df_sent = []
-        self.df_output = []
-        self.recipient_colname = 'recipients'
-        self.recipient_sep = '|'
+        '''Placeholder for initializations .'''
         
     
     
@@ -37,19 +32,19 @@ class Sent_Received_Summarizer():
             'received' (number of emails received by each person).
         '''
         # Split the recipients column by '|' into as many columns as needed:
-        self.df_received = df_log[recipient_colname].str.split(recipient_sep, expand = True)
+        df_received = df_log[recipient_colname].str.split(recipient_sep, expand = True)
     
         # Put it into a dataframe with one column containing count data 
         # (with each person/recipient stored in index)
-        self.df_received = pd.melt(self.df_received, value_name = 'received')
+        df_received = pd.melt(df_received, value_name = 'received')
         
-        self.df_received = self.df_received['received'].value_counts() # count # of recipient occurrences
+        df_received = df_received['received'].value_counts() # count # of recipient occurrences
             # (Assumes recipient only occurs once per email)
-        self.df_received = pd.DataFrame(self.df_received) # turn series into a df
-        self.df_received.reset_index(level=0, inplace=True) # make index into a column (i.e., 'person')
-        self.df_received.columns = ['person', 'received'] # rename columns
+        df_received = pd.DataFrame(df_received) # turn series into a df
+        df_received.reset_index(level=0, inplace=True) # make index into a column (i.e., 'person')
+        df_received.columns = ['person', 'received'] # rename columns
         
-        return self.df_received
+        return df_received
     
     
     def make_sent_col (self, df_log, sender_colname = 'sender'): 
@@ -90,14 +85,15 @@ class Sent_Received_Summarizer():
                                 sender_colname)
         
         # Merge sent and received dfs
-        self.df_output1 = pd.merge(df_sent, df_received, 
+        df_output1 = pd.merge(df_sent, df_received, 
                              how = 'outer', 
                              on = 'person')
         # Fill all NaNs with 0
-        self.df_output1 = self.df_output1.fillna(0)
+        df_output1 = df_output1.fillna(0)
         
-        # Sort by sent (descending?)
-        self.df_output1 = self.df_output1.sort_values(by = 'sent', ascending = False)
+        # Sort by sent (descending)
+        df_output1 = df_output1.sort_values(by = 'sent', ascending = False)
         
-        self.df_output1.to_csv('Output1_Sent_Received_Summary.csv')
-        return self.df_output1
+        df_output1.to_csv('Output1_Sent_Received_Summary.csv', index = False)
+        
+        return df_output1
